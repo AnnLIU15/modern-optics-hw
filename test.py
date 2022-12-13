@@ -8,7 +8,7 @@ import matplotlib.patches as patches
 clim=(380,780)
 norm = plt.Normalize(*clim)
 wl = np.arange(clim[0],clim[1]+1,1)
-colorlist = wavelength_to_rgba(wl)
+colorlist = wavelength_to_rgba(wl,0.8)
 
 spectralmap = matplotlib.colors.LinearSegmentedColormap.from_list("spectrum", colorlist)
 
@@ -49,7 +49,6 @@ axes.bar(
         zorder=-140
     )
 # im = plt.imshow(X, clim=clim,  extent=extent, cmap=spectralmap, aspect='auto')
-
 # im.set_clip_path(polygon)
 # plt.fill_between(wavelengths, spectrum, 8, color='w', interpolate=True)
 plt.xlabel('Wavelength (nm)')

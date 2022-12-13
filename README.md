@@ -18,8 +18,6 @@ D. 在上述RGB光源的基础上，加入第四个基色（如黄色），假�
 
 左图：光谱功率分布；右图：色品图与色域
 
-
-
 ## 参考资料
 
 ### 程序 (深度借鉴！)
@@ -35,11 +33,9 @@ D. 在上述RGB光源的基础上，加入第四个基色（如黄色），假�
   # conda方式
   conda install -c conda-forge colour-science
   ```
-
 * luox [luox-app/luox: Code base for the luox platform (github.com)](https://github.com/luox-app/luox)
 * [Illuminant Data (uwaterloo.ca)](http://www.npsg.uwaterloo.ca/data/illuminant.php)
-
-*  [Spectra Code (sfasu.edu)](http://www.physics.sfasu.edu/astro/color/spectra.html)波长转颜色 [Exploring the Visible Spectrum in Python - CodeDromeCodeDrome](https://www.codedrome.com/exploring-the-visible-spectrum-in-python/) [python - Matplotlib - color under curve based on spectral color - Stack Overflow](https://stackoverflow.com/questions/44959955/matplotlib-color-under-curve-based-on-spectral-color) [Color Science (midnightkite.com)](http://www.midnightkite.com/color.html) [Spectra Code (sfasu.edu)](http://www.physics.sfasu.edu/astro/color/spectra.html)
+* [Spectra Code (sfasu.edu)](http://www.physics.sfasu.edu/astro/color/spectra.html)波长转颜色 [Exploring the Visible Spectrum in Python - CodeDromeCodeDrome](https://www.codedrome.com/exploring-the-visible-spectrum-in-python/) [python - Matplotlib - color under curve based on spectral color - Stack Overflow](https://stackoverflow.com/questions/44959955/matplotlib-color-under-curve-based-on-spectral-color) [Color Science (midnightkite.com)](http://www.midnightkite.com/color.html) [Spectra Code (sfasu.edu)](http://www.physics.sfasu.edu/astro/color/spectra.html)
 
 ### 理论
 
@@ -58,6 +54,25 @@ keyword: `site:cie.co.at STANDARD ILLUMINANT csv`
 三刺激值
 
 * RGB [cie.15.2004.pdf (archive.org)](https://ia902802.us.archive.org/23/items/gov.law.cie.15.2004/cie.15.2004.pdf) [色差仪的三原色单位量和三次激值 - 深圳市三恩时科技有限公司 (3nh.com)](http://www.3nh.com/news/739.html)
+* XYZ [Law.Resource.Org](https://law.resource.org/pub/us/cfr/ibr/003/) colour\colorimetry\datasets\cmfs.py
 
-* XYZ [Law.Resource.Org](https://law.resource.org/pub/us/cfr/ibr/003/)
+[ciexyz29082000.pdf (docs-hoffmann.de)](http://docs-hoffmann.de/ciexyz29082000.pdf)
 
+LED
+
+* [Spectral Power Distribution of LED (color.support)](http://color.support/ledspd.html)
+* https://www.google.com.hk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi_5v65_fP7AhUXaN4KHZKBAlMQFnoECBUQAQ&url=https%3A%2F%2Fsites.psu.edu%2Fllab%2Ffiles%2F2020%2F02%2FCQS9.0.3-Win-5nm.xls&usg=AOvVaw0rtuRZxRA6YFNfHxrx51nf [Downloads | Lighting Lab (psu.edu)](https://sites.psu.edu/llab/downloads/)
+* [C I E L a b . X Y Z • Специализированные профили для цветоделения](https://cielab.xyz/profiles/#WIG) https://www.google.com.hk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjM-P_f__P7AhVI0GEKHYniB_8QFnoECBMQAQ&url=https%3A%2F%2Fcielab.xyz%2Fpdf%2FNIST%2520CQS%2520simulation%25207.4.xls&usg=AOvVaw0KvUCgnUkk7YWtHDCBCKbK
+* [Index of /406 (auld.me.uk)](http://bramley.auld.me.uk/406/) http://bramley.auld.me.uk/406/Calculating%20CRI-CAM02UCS-v2.xls
+* [Spectral Calculator - Illuminating Engineering Society (ies.org)](https://www.ies.org/standards/standards-toolbox/tm-30-spectral-calculator/)
+
+[Statement (auniontech.com)](https://www.auniontech.com/ueditor/file/20171225/1514172625322631.pdf) 三基色图介绍
+
+* [Spectral Calculator - Illuminating Engineering Society (ies.org)](https://www.ies.org/standards/standards-toolbox/tm-30-spectral-calculator/)
+* [LED Spectrum Simulator | Waveform Lighting](https://www.waveformlighting.com/led-spectrum-simulator/)
+
+[如何在OpticStudio中使用Osram LED光源数据 – 中文帮助 (zemax.com)](https://support.zemax.com/hc/zh-cn/articles/1500005486661)
+
+[Opto Semiconductors | OSRAM](https://www.osram.com/apps/downloadcenter/os/?path=%2Fos-files%2FOptical+Simulation%2FLED%2F)
+
+[CVRL main](http://www.cvrl.org/) [Colour matching functions (cvrl.org)](http://www.cvrl.org/cmfs.htm)

@@ -1,0 +1,2 @@
+* xyz_tri.csv original from [https://law.resource.org/pub/us/cfr/ibr/003/cie.15.2004.spectra.xls](https://law.resource.org/pub/us/cfr/ibr/003/cie.15.2004.spectra.xls) and prove it is CIE 1931 2 Degree Standard Observer in [colour/cmfs.py at 3790f540422169dded6a6baec5d93d0b9d950216 · colour-science/colour (github.com)](https://github.com/colour-science/colour/blob/3790f540422169dded6a6baec5d93d0b9d950216/colour/colorimetry/datasets/cmfs.py)
+* rgb_tri.csv [cie.15.2004.pdf (archive.org)](https://ia902802.us.archive.org/23/items/gov.law.cie.15.2004/cie.15.2004.pdf)

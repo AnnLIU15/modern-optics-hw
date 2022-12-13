@@ -24,7 +24,7 @@ def get_tristimulus(csv_path: str,
         base_dir (str, optional): based save dir. Defaults to './outputs/Tristimulus'.
     '''
     
-    data = read_data_from_csv(csv_path, if_set_limits = False)
+    data = read_data_from_csv(csv_path,if_limits=False)
     origin_data = data[0][0]
     rgb_list = ['r','g','b']
     fig = plt.figure(figsize=(12,6))
@@ -38,7 +38,7 @@ def get_tristimulus(csv_path: str,
     ax.legend(frameon = False)
     title_type = ''.join(str_list)
     plt.title(f'CIE 1931 {title_type.upper()} Tristimulus Values')
-    plt.xlim([380,780])
+    plt.xlim([origin_data[0,0],origin_data[-1,0]])
     if if_save:
         if not os.path.exists(base_dir):
             os.makedirs(base_dir)
