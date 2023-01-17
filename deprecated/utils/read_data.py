@@ -2,7 +2,7 @@ import numpy as np
 from typing import Union, List
 import sys
 from pathlib import Path
-sys.path.append(Path(__file__).resolve().parent.parent)
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from utils.cubic_Spline import cubic_spline
 
 def read_data_from_csv(relative_paths: Union[List[str],str],

@@ -6,7 +6,8 @@ __pycache__/
 *.eps
 # C extensions
 *.so
-
+aaa.txt
+bbb.txt
 # Distribution / packaging
 .Python
 build/
