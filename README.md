@@ -71,8 +71,17 @@ LED
 * [Spectral Calculator - Illuminating Engineering Society (ies.org)](https://www.ies.org/standards/standards-toolbox/tm-30-spectral-calculator/)
 * [LED Spectrum Simulator | Waveform Lighting](https://www.waveformlighting.com/led-spectrum-simulator/)
 
-[如何在OpticStudio中使用Osram LED光源数据 – 中文帮助 (zemax.com)](https://support.zemax.com/hc/zh-cn/articles/1500005486661)
+[如何在OpticStudio中使用Osram LED光源数据 – 中文帮助 (zemax.com)](https://support.zemax.com/hc/zh-cn/articles/1500005486661) [Understanding the LED spectrum – Photon Grow LED](https://photongrowled.com/blogs/blog/understanding-the-led-spectrum)
 
-[Opto Semiconductors | OSRAM](https://www.osram.com/apps/downloadcenter/os/?path=%2Fos-files%2FOptical+Simulation%2FLED%2F)
+* RGB LED data [Opto Semiconductors | OSRAM](https://www.osram.com/apps/downloadcenter/os/?path=%2Fos-files%2FOptical+Simulation%2FLED%2F)
+* CIE 1931 AND 2006 XYZ data [CVRL main](http://www.cvrl.org/) [Colour matching functions (cvrl.org)](http://www.cvrl.org/cmfs.htm) https://cielab.xyz/pdf/CIE2006CMFs.xls
 
-[CVRL main](http://www.cvrl.org/) [Colour matching functions (cvrl.org)](http://www.cvrl.org/cmfs.htm)
+[RGB/XYZ Matrices (brucelindbloom.com)](http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html)
+
+[光谱转换为颜色XYZ原理和代码-上海汇服科技有限公司 (qyy7.com)](http://www.qyy7.com/Home/App/info/id/168)
+
+[Exploring the Visible Spectrum in Python - CodeDromeCodeDrome](https://www.codedrome.com/exploring-the-visible-spectrum-in-python/)
+
+[光谱与色度图的映射_红鱼鱼的博客-CSDN博客_反射和透射光谱的色系坐标](https://blog.csdn.net/qq_40692109/article/details/105311778)
+
+[显示行业常见色域标准大总结 (auniontech.com)](https://www.auniontech.com/jishu-52.html)
