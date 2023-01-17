@@ -8,6 +8,7 @@ __pycache__/
 *.so
 aaa.txt
 bbb.txt
+report/
 # Distribution / packaging
 .Python
 build/
