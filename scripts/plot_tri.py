@@ -46,6 +46,8 @@ def get_tristimulus(csv_path: str,
                 bbox_inches='tight',pad_inches = 0,transparent = True)
         plt.savefig(f'{base_dir}/{title_type}.svg', format = 'svg',
                     bbox_inches='tight',pad_inches = 0,transparent = True)
+        plt.savefig(f'{base_dir}/{title_type}.png', format = 'png', dpi=300,
+                            bbox_inches='tight',pad_inches = 0,transparent = True)
     if if_show:
         plt.show()
     else:
