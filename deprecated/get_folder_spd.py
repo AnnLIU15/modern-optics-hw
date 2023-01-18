@@ -15,7 +15,7 @@ def main(args):
                 '_SPD/'
         all_file = glob(base_dir+'/*.csv' ) + glob(base_dir+'/*.txt' )
         get_spd(csv_path=all_file,
-                if_show = False,
+                is_show = False,
                 base_dir=save_dir)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

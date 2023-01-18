@@ -11,16 +11,16 @@ from utils import read_data_from_csv
 
 def get_tristimulus(csv_path: str,
                     str_list: List[str],
-                    if_save: bool = True,
-                    if_show: bool = True,
+                    is_save: bool = True,
+                    is_show: bool = True,
                     base_dir: str = 'outputs/Tristimulus') -> None:
     r'''get the tristimulus value
 
     Args:
         csv_path (str): csv path
         str_list (List[str]): xyz rgb
-        if_save (bool, optional): flag of save figure. Defaults to True.
-        if_show (bool, optional): flag of show figure. Defaults to True.
+        is_save (bool, optional): flag of save figure. Defaults to True.
+        is_show (bool, optional): flag of show figure. Defaults to True.
         base_dir (str, optional): based save dir. Defaults to './outputs/Tristimulus'.
     '''
     
@@ -39,7 +39,7 @@ def get_tristimulus(csv_path: str,
     title_type = ''.join(str_list)
     plt.title(f'CIE 1931 {title_type.upper()} Tristimulus Values')
     plt.xlim([origin_data[0,0],origin_data[-1,0]])
-    if if_save:
+    if is_save:
         if not os.path.exists(base_dir):
             os.makedirs(base_dir)
         plt.savefig(f'{base_dir}/{title_type}.pdf', format = 'pdf',
@@ -48,15 +48,15 @@ def get_tristimulus(csv_path: str,
                     bbox_inches='tight',pad_inches = 0,transparent = True)
         plt.savefig(f'{base_dir}/{title_type}.png', format = 'png', dpi=300,
                             bbox_inches='tight',pad_inches = 0,transparent = True)
-    if if_show:
+    if is_show:
         plt.show()
     else:
         plt.close()
 
 
 def unittest():
-    get_tristimulus('data/xyz_tri.csv',['x','y','z'],if_show = False)
-    get_tristimulus('data/rgb_tri.csv',['r','g','b'],if_show = False)
+    get_tristimulus('data/xyz_tri.csv',['x','y','z'],is_show = False)
+    get_tristimulus('data/rgb_tri.csv',['r','g','b'],is_show = False)
 
 
 

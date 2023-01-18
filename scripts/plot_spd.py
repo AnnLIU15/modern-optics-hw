@@ -5,27 +5,26 @@ from typing import Union, List
 import os
 import sys
 from pathlib import Path
+import argparse
 base_path = str(Path(__file__).resolve().parent.parent)
 sys.path.append(base_path)
 from utils import get_spd,spd_background
-import copy
 
 def plot_spd(csv_path: Union[str,List[str]],
-             if_save: bool = True,
-             if_show: bool = True,
+             is_save: bool = True,
+             is_show: bool = True,
              ) -> None:
     r'''plot the spectral power density value
 
     Args:
         csv_path (Union[str,List[str]]): csv path(s)
-        if_save (bool, optional): flag of save figure. Defaults to True.
-        if_show (bool, optional): flag of show figure. Defaults to True.
+        is_save (bool, optional): flag of save figure. Defaults to True.
+        is_show (bool, optional): flag of show figure. Defaults to True.
     '''
     if isinstance(csv_path,str):
         csv_path = [csv_path]
     for cur_file in csv_path:
         spd_data,file_str,wavelengths = get_spd(cur_file,)
-        ['outputs'] + cur_file.replace('\\','/').split('/')[1:-1]
         base_dir = ['outputs'] + cur_file.replace('\\','/').split('/')[1:-1]
         base_dir = '/'.join(base_dir) + '/'
         if not os.path.exists(base_dir):
@@ -103,31 +102,39 @@ def plot_spd(csv_path: Union[str,List[str]],
             ax.spines['left'].set_visible(False)
             ax.spines['right'].set_visible(False)
             ax.get_yaxis().set_visible(False)
-            if if_save:
+            if is_save:
 
-                plt.savefig(f'{base_dir}/{file_str}-spd-{cur_xyz_name}.pdf', format = 'pdf',
-                        bbox_inches='tight',pad_inches = 0,transparent = True)
-                plt.savefig(f'{base_dir}/{file_str}-spd-{cur_xyz_name}.svg', format = 'svg',
-                            bbox_inches='tight',pad_inches = 0,transparent = True)
-                plt.savefig(f'{base_dir}/{file_str}-spd-{cur_xyz_name}.png', format = 'png', dpi=300,
-                            bbox_inches='tight',pad_inches = 0,transparent = True)
+                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[-4:]}-spd.pdf',
+                            format = 'pdf', bbox_inches='tight',pad_inches = 0,transparent = True)
+                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[-4:]}-spd.svg', 
+                            format = 'svg', bbox_inches='tight',pad_inches = 0,transparent = True)
+                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[-4:]}-spd.png', 
+                            format = 'png', dpi=300, bbox_inches='tight',pad_inches = 0,transparent = True)
         plt.figure(fig)
         plt.suptitle(f'Spectral Power Distribution {file_str}')
-        if if_save:
+        if is_save:
             plt.savefig(f'{base_dir}/{file_str}-spd.pdf', format = 'pdf',
                     bbox_inches='tight',pad_inches = 0,transparent = True)
             plt.savefig(f'{base_dir}/{file_str}-spd.svg', format = 'svg',
                         bbox_inches='tight',pad_inches = 0,transparent = True)
             plt.savefig(f'{base_dir}/{file_str}-spd.png', format = 'png', dpi=300,
                         bbox_inches='tight',pad_inches = 0,transparent = True)
-        if if_show:
+        if is_show:
             plt.show()
         plt.close('all')
 
 
-def unittest():
-    plot_spd(['data/psu_llab/CQS-1-NM.csv'],)
-
 
 if __name__ == '__main__':
-    unittest()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--files',type=str,nargs='+',default= 'data/psu_llab/CQS-1-NM.csv',
+                        help='python xxxx.py --files data/xxx.txt/csv')
+    parser.add_argument('--is_save',action='store_false')
+    parser.add_argument('--is_show',action='store_true')
+    parser.add_argument('--base_dir',default=0)
+    args = parser.parse_args()
+    
+    plot_spd(csv_path = args.files,
+            is_save = args.is_save,
+            is_show = args.is_show,
+            )

@@ -1,5 +1,5 @@
 import numpy as np
-from typing import Tuple, Union
+from typing import Tuple, Union, List
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -9,7 +9,7 @@ from utils.read_data import read_data_from_csv
 
 def get_spd(default_spd_path: Union[str,list] = 'data/psu_llab/CQS-1-NM.csv',
             spd_type: int = 0 # 0 -> only return, 1 -> combine
-            ) -> Tuple[np.ndarray,str]:
+            ) -> Tuple[np.ndarray,Union[str,List[str]],np.ndarray]:
     if type(default_spd_path) == str:
         default_data = read_data_from_csv(
             [default_spd_path])
@@ -21,8 +21,10 @@ def get_spd(default_spd_path: Union[str,list] = 'data/psu_llab/CQS-1-NM.csv',
     else:
         default_data = read_data_from_csv(default_spd_path)
         spd_data,file_str = default_data[0]
+        file_str = [file_str]
         wave_length, spd_data = spd_data[:,0], spd_data[:,1:]
         for spd_data_dict in default_data[1:]:
+            file_str.append(spd_data_dict[1])
             spd_data = np.concatenate((spd_data,spd_data_dict[0][:,1:]),axis=1)
         spd_data = spd_data/np.max(spd_data)
         spd_data = np.sum(spd_data,axis=1) if spd_type else spd_data

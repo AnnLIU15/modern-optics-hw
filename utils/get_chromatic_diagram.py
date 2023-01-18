@@ -122,8 +122,7 @@ def get_background(default_D65_path: str =
                 va="center", fontdict={"size": "small"},
                 zorder=-100,
             )
-        axes.set_xlim([-.1,.9]),axes.set_ylim([-.1,.9])
-        axes.grid(visible=True)
+    axes.grid(visible=True)
     axes.set_xlim([-.1,.9]),axes.set_ylim([-.1,.9])
     # plt.scatter(0.31270, 0.32900) # D65
     axes.scatter(xy_D65[0],xy_D65[1],color='#333333',
