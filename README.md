@@ -20,22 +20,23 @@ D. 在上述RGB光源的基础上，加入第四个基色（如黄色），假�
 
 ## 参考资料
 
-### 程序 (深度借鉴！)
+### 程序 (深度！)
 
 * colour -- [colour-science/colour: Colour Science for Python (github.com)](https://github.com/colour-science/colour)
-
-  ```shell
-  # 安装
-  git clone git@github.com:colour-science/colour.git
-  python setup.py build && python setup.py install 
-  # pip方式
-  pip install colour-science
-  # conda方式
-  conda install -c conda-forge colour-science
-  ```
-* luox [luox-app/luox: Code base for the luox platform (github.com)](https://github.com/luox-app/luox)
-* [Illuminant Data (uwaterloo.ca)](http://www.npsg.uwaterloo.ca/data/illuminant.php)
-* [Spectra Code (sfasu.edu)](http://www.physics.sfasu.edu/astro/color/spectra.html)波长转颜色 [Exploring the Visible Spectrum in Python - CodeDromeCodeDrome](https://www.codedrome.com/exploring-the-visible-spectrum-in-python/) [python - Matplotlib - color under curve based on spectral color - Stack Overflow](https://stackoverflow.com/questions/44959955/matplotlib-color-under-curve-based-on-spectral-color) [Color Science (midnightkite.com)](http://www.midnightkite.com/color.html) [Spectra Code (sfasu.edu)](http://www.physics.sfasu.edu/astro/color/spectra.html)
+  * 借鉴了colour中的光谱分布图中xyz预处理（E\D65预处理矩阵）*CMCCAT2000* chromatic adaptation transform.  http://en.wikipedia.org/wiki/CIECAM02#CAT02 XYZ -> LMS -> XYZ
+    ```
+    @incollection{Westland2012k,
+      title        = {{{CMCCAT2000}}},
+      booktitle    = {Computational {{Colour Science Using MATLAB}}},
+      author       = {Westland, Stephen and Ripamonti, Caterina and
+        Cheung, Vien},
+      year         = 2012,
+      edition      = {Second},
+      pages        = {83--86},
+      isbn         = {978-0-470-66569-5},
+    }
+    ```
+  * 借鉴了colour中的色品图归一化做法，解决了色品图白点偏移的问题，srgb
 
 ### 理论
 
@@ -46,24 +47,18 @@ D. 在上述RGB光源的基础上，加入第四个基色（如黄色），假�
 
 keyword: `site:cie.co.at STANDARD ILLUMINANT csv`
 
-* [LSPDD | Light Spectral Power Distribution Database](https://lspdd.org/app/en/lamps?page=1)
 * [Data Tables | CIE](https://cie.co.at/data-tables)
-* [colord/data/illuminant at main · hughsie/colord (github.com)](https://github.com/hughsie/colord/tree/main/data/illuminant)
-* colour [colour/colour/colorimetry/datasets at develop · colour-science/colour (github.com)](https://github.com/colour-science/colour/tree/develop/colour/colorimetry/datasets)
 
 三刺激值
 
 * RGB [cie.15.2004.pdf (archive.org)](https://ia902802.us.archive.org/23/items/gov.law.cie.15.2004/cie.15.2004.pdf) [色差仪的三原色单位量和三次激值 - 深圳市三恩时科技有限公司 (3nh.com)](http://www.3nh.com/news/739.html)
-* XYZ [Law.Resource.Org](https://law.resource.org/pub/us/cfr/ibr/003/) colour\colorimetry\datasets\cmfs.py
-
-[ciexyz29082000.pdf (docs-hoffmann.de)](http://docs-hoffmann.de/ciexyz29082000.pdf)
+* CIE 1931 AND 2006 XYZ data [CVRL main](http://www.cvrl.org/) [Colour matching functions (cvrl.org)](http://www.cvrl.org/cmfs.htm) https://cielab.xyz/pdf/CIE2006CMFs.xls
 
 LED
 
 * [Spectral Power Distribution of LED (color.support)](http://color.support/ledspd.html)
-* https://www.google.com.hk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi_5v65_fP7AhUXaN4KHZKBAlMQFnoECBUQAQ&url=https%3A%2F%2Fsites.psu.edu%2Fllab%2Ffiles%2F2020%2F02%2FCQS9.0.3-Win-5nm.xls&usg=AOvVaw0rtuRZxRA6YFNfHxrx51nf [Downloads | Lighting Lab (psu.edu)](https://sites.psu.edu/llab/downloads/)
-* [C I E L a b . X Y Z • Специализированные профили для цветоделения](https://cielab.xyz/profiles/#WIG) https://www.google.com.hk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjM-P_f__P7AhVI0GEKHYniB_8QFnoECBMQAQ&url=https%3A%2F%2Fcielab.xyz%2Fpdf%2FNIST%2520CQS%2520simulation%25207.4.xls&usg=AOvVaw0KvUCgnUkk7YWtHDCBCKbK
-* [Index of /406 (auld.me.uk)](http://bramley.auld.me.uk/406/) http://bramley.auld.me.uk/406/Calculating%20CRI-CAM02UCS-v2.xls
+* [Downloads | Lighting Lab (psu.edu)](https://sites.psu.edu/llab/downloads/)
+* RGB LED data [Opto Semiconductors | OSRAM](https://www.osram.com/apps/downloadcenter/os/?path=%2Fos-files%2FOptical+Simulation%2FLED%2F) -- 本次没使用 [如何在OpticStudio中使用Osram LED光源数据 – 中文帮助 (zemax.com)](https://support.zemax.com/hc/zh-cn/articles/1500005486661) [Understanding the LED spectrum – Photon Grow LED](https://photongrowled.com/blogs/blog/understanding-the-led-spectrum)
 * [Spectral Calculator - Illuminating Engineering Society (ies.org)](https://www.ies.org/standards/standards-toolbox/tm-30-spectral-calculator/)
 
 [Statement (auniontech.com)](https://www.auniontech.com/ueditor/file/20171225/1514172625322631.pdf) 三基色图介绍
@@ -71,17 +66,4 @@ LED
 * [Spectral Calculator - Illuminating Engineering Society (ies.org)](https://www.ies.org/standards/standards-toolbox/tm-30-spectral-calculator/)
 * [LED Spectrum Simulator | Waveform Lighting](https://www.waveformlighting.com/led-spectrum-simulator/)
 
-[如何在OpticStudio中使用Osram LED光源数据 – 中文帮助 (zemax.com)](https://support.zemax.com/hc/zh-cn/articles/1500005486661) [Understanding the LED spectrum – Photon Grow LED](https://photongrowled.com/blogs/blog/understanding-the-led-spectrum)
-
-* RGB LED data [Opto Semiconductors | OSRAM](https://www.osram.com/apps/downloadcenter/os/?path=%2Fos-files%2FOptical+Simulation%2FLED%2F)
-* CIE 1931 AND 2006 XYZ data [CVRL main](http://www.cvrl.org/) [Colour matching functions (cvrl.org)](http://www.cvrl.org/cmfs.htm) https://cielab.xyz/pdf/CIE2006CMFs.xls
-
-[RGB/XYZ Matrices (brucelindbloom.com)](http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html)
-
-[光谱转换为颜色XYZ原理和代码-上海汇服科技有限公司 (qyy7.com)](http://www.qyy7.com/Home/App/info/id/168)
-
-[Exploring the Visible Spectrum in Python - CodeDromeCodeDrome](https://www.codedrome.com/exploring-the-visible-spectrum-in-python/)
-
-[光谱与色度图的映射_红鱼鱼的博客-CSDN博客_反射和透射光谱的色系坐标](https://blog.csdn.net/qq_40692109/article/details/105311778)
-
-[显示行业常见色域标准大总结 (auniontech.com)](https://www.auniontech.com/jishu-52.html)
+[RGB/XYZ Matrices (brucelindbloom.com)](http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html) And Colour
