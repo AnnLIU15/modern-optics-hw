@@ -42,9 +42,9 @@ def get_tristimulus(csv_path: str,
     if if_save:
         if not os.path.exists(base_dir):
             os.makedirs(base_dir)
-        plt.savefig(f'{base_dir}/{title_type}.eps', format = 'eps', dpi = 300,
+        plt.savefig(f'{base_dir}/{title_type}.pdf', format = 'pdf',
                 bbox_inches='tight',pad_inches = 0,transparent = True)
-        plt.savefig(f'{base_dir}/{title_type}.svg', format = 'svg', dpi = 300,
+        plt.savefig(f'{base_dir}/{title_type}.svg', format = 'svg',
                     bbox_inches='tight',pad_inches = 0,transparent = True)
     if if_show:
         plt.show()

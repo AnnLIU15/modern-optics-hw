@@ -37,6 +37,15 @@ CAT_CAT02 = np.array(
 )
 # colour
 
+
+NTSC = np.array(
+    [
+        [0.630, 0.340],
+        [0.310, 0.595],
+        [0.155, 0.070], # white point (CIE illuminant D65)	0.3127	0.3290
+    ]
+)   # https://en.wikipedia.org/wiki/NTSC
+
 def spow(data,exp):
     data_p = np.sign(data) * np.abs(data) ** exp
     data_p[np.isnan(data_p)] = 0

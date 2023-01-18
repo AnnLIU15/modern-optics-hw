@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.pdf
-*.eps
+*.svg
 # C extensions
 *.so
 aaa.txt
