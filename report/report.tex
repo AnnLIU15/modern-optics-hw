@@ -1,0 +1,77 @@
+%# -*- coding:utf-8 -*-
+\documentclass[fontset=windows]{article}
+\usepackage[final]{neurips_2022}
+
+\usepackage[UTF8]{ctex}
+\usepackage[numbers, sort&compress]{natbib}
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}       % 图片包
+\usepackage{subfig}
+\usepackage{geometry}
+\usepackage{calligra}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{tablefootnote}
+\usepackage{indentfirst}
+\usepackage{amssymb}
+\setlength{\parindent}{2em}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notations}{Notations}
+
+% \hypersetup{
+%   colorlinks=true,
+%   linkcolor=cyan,
+%   filecolor=red,      
+%   urlcolor=blue,
+%   citecolor=green,
+% }
+\title{基于CIE 1931-XYZ与CIE 2006-XYZ色彩空间的光源光谱和色域特性计算}
+
+\author{%
+    刘昭炀\\ %\thanks{Use footnote for providing further information
+    电子与信息工程学院\quad 信息与通信工程\\
+    22215608\\
+    \href{mailto:liuzhy86@mail2.sysu.edu.cn}{liuzhy86@mail2.sysu.edu.cn}\\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \qquad 色彩是一种人类大脑的主观感受，不同人所感知的颜色也会有所区别。色彩是一个心理量，人们使用RGB模型将其公理化。根据混色原理，RGB模型可表征所有色彩，但由于RGB模型的三刺激值之一r存在负值使用不方便，因此对RGB系统进行线性变化，得到没有负值的XYZ系统。本文将基于$2^\circ$观察视角的CIE 1931-XYZ与CIE 2006-XYZ色彩空间，对LED数据\footnote{数据来源：\url{https://sites.psu.edu/llab/downloads/}}做光源光谱和色域特性计算。
+
+    \qquad 本文使用Python\footnote{本文源代码可见于：\url{https://github.com/AnnLIU15/modern-optics-hw}}基本实现了``光源光谱与色域特性计算''题目的四个子目标：光谱图、色品图与最大色域四基色（ABCD），部分借鉴了开源项目Colour\footnote{Colour：\url{https://www.colour-science.org/}}的思路并按自己的理解实现对应其功能。
+\end{abstract}
+
+% footnote ref: https://arxiv.org/pdf/2108.10026.pdf
+\begingroup
+\let\clearpage\relax
+\include{sec/sec1.tex}  % 引言
+\include{sec/sec2.tex}  % 定义
+\include{sec/sec3.tex}  % 应用
+\include{sec/sec4.tex}  % 总结
+\include{sec/sec5.tex}  % 应用
+\include{sec/sec6.tex}  % 总结
+\endgroup
+
+\medskip
+{\small{}\bibliographystyle{./reference/gbt7714-2005.bst}
+\bibliography{./reference/report}
+}{\small\par}
+
+\end{document}

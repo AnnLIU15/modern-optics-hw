@@ -2,13 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.pdf
-*.svg
 # C extensions
 *.so
 aaa.txt
 bbb.txt
-report/
 # Distribution / packaging
 .Python
 build/
