@@ -30,6 +30,8 @@ def plot_spd(csv_path: Union[str,List[str]],
         if not os.path.exists(base_dir):
             os.makedirs(base_dir)
         # print('data/psu_llab/CQS-1-NM.csv'[:'data/psu_llab/CQS-1-NM.csv'.index(file_str)])
+        for idx in range(spd_data.shape[-1]):
+            spd_data[:,idx] /= np.max(spd_data[:,idx])
         spd_data_sum = spd_data.sum(axis=1)
         limits: np.ndarray = np.array([380, 780])
 
@@ -104,20 +106,20 @@ def plot_spd(csv_path: Union[str,List[str]],
             ax.get_yaxis().set_visible(False)
             if is_save:
 
-                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[4:8]}-spd.pdf',
+                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[4:8]}-spd-n.pdf',
                             format = 'pdf', bbox_inches='tight',pad_inches = 0,transparent = True)
-                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[4:8]}-spd.svg', 
+                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[4:8]}-spd-n.svg', 
                             format = 'svg', bbox_inches='tight',pad_inches = 0,transparent = True)
-                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[4:8]}-spd.png', 
+                plt.savefig(f'{base_dir}/{file_str}-{cur_xyz_name[4:8]}-spd-n.png', 
                             format = 'png', dpi=300, bbox_inches='tight',pad_inches = 0,transparent = True)
         plt.figure(fig)
         plt.suptitle(f'Spectral Power Distribution {file_str}')
         if is_save:
-            plt.savefig(f'{base_dir}/{file_str}-spd.pdf', format = 'pdf',
+            plt.savefig(f'{base_dir}/{file_str}-spd-n.pdf', format = 'pdf',
                     bbox_inches='tight',pad_inches = 0,transparent = True)
-            plt.savefig(f'{base_dir}/{file_str}-spd.svg', format = 'svg',
+            plt.savefig(f'{base_dir}/{file_str}-spd-n.svg', format = 'svg',
                         bbox_inches='tight',pad_inches = 0,transparent = True)
-            plt.savefig(f'{base_dir}/{file_str}-spd.png', format = 'png', dpi=300,
+            plt.savefig(f'{base_dir}/{file_str}-spd-n.png', format = 'png', dpi=300,
                         bbox_inches='tight',pad_inches = 0,transparent = True)
         if is_show:
             plt.show()

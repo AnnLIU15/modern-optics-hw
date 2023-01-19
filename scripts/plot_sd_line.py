@@ -23,7 +23,7 @@ def plot_sd(csv_path: Union[str,List[str]],
         is_save (bool, optional): flag of save figure. Defaults to True.
         is_show (bool, optional): flag of show figure. Defaults to True.
     '''
-    xyz_str = 'xyz cie2006' if type_xyz else 'xyz cie1931'
+    xyz_str = 'CIE 2006-XYZ' if type_xyz else 'CIE 1931-XYZ'
     if isinstance(csv_path,str):
         csv_path = [csv_path]
     if isinstance(base_dir,str):
@@ -101,11 +101,11 @@ def plot_sd(csv_path: Union[str,List[str]],
     axes.set_xlabel('x'), axes.set_ylabel('y')
     axes.set_xlim([-.1,.9]), axes.set_ylim([-.1,.9])
     if is_save:
-        plt.savefig(f'{base_dir}/{file_name}-{xyz_str[-4:]}-Line.pdf', format = 'pdf',
+        plt.savefig(f'{base_dir}/{file_name}-{xyz_str[4:8]}-Line.pdf', format = 'pdf',
                 bbox_inches='tight',pad_inches = 0,transparent = True)
-        plt.savefig(f'{base_dir}/{file_name}-{xyz_str[-4:]}-Line.svg', format = 'svg',
+        plt.savefig(f'{base_dir}/{file_name}-{xyz_str[4:8]}-Line.svg', format = 'svg',
                     bbox_inches='tight',pad_inches = 0,transparent = True)
-        plt.savefig(f'{base_dir}/{file_name}-{xyz_str[-4:]}-Line.png', format = 'png', dpi=300,
+        plt.savefig(f'{base_dir}/{file_name}-{xyz_str[4:8]}-Line.png', format = 'png', dpi=300,
                     bbox_inches='tight',pad_inches = 0,transparent = True)
     if is_show:
         plt.show()

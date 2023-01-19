@@ -13,7 +13,8 @@ def get_tristimulus(csv_path: str,
                     str_list: List[str],
                     is_save: bool = True,
                     is_show: bool = True,
-                    base_dir: str = 'outputs/Tristimulus') -> None:
+                    base_dir: str = 'outputs/Tristimulus',
+                    std: str='1931') -> None:
     r'''get the tristimulus value
 
     Args:
@@ -37,16 +38,16 @@ def get_tristimulus(csv_path: str,
     ax.spines['right'].set_visible(False)
     ax.legend(frameon = False)
     title_type = ''.join(str_list)
-    plt.title(f'CIE 1931 {title_type.upper()} Tristimulus Values')
+    plt.title(f'CIE {std}-{title_type.upper()} Tristimulus Values')
     plt.xlim([origin_data[0,0],origin_data[-1,0]])
     if is_save:
         if not os.path.exists(base_dir):
             os.makedirs(base_dir)
-        plt.savefig(f'{base_dir}/{title_type}.pdf', format = 'pdf',
+        plt.savefig(f'{base_dir}/{title_type}-{std}.pdf', format = 'pdf',
                 bbox_inches='tight',pad_inches = 0,transparent = True)
-        plt.savefig(f'{base_dir}/{title_type}.svg', format = 'svg',
+        plt.savefig(f'{base_dir}/{title_type}-{std}.svg', format = 'svg',
                     bbox_inches='tight',pad_inches = 0,transparent = True)
-        plt.savefig(f'{base_dir}/{title_type}.png', format = 'png', dpi=300,
+        plt.savefig(f'{base_dir}/{title_type}-{std}.png', format = 'png', dpi=300,
                             bbox_inches='tight',pad_inches = 0,transparent = True)
     if is_show:
         plt.show()
@@ -57,7 +58,7 @@ def get_tristimulus(csv_path: str,
 def unittest():
     get_tristimulus('data/xyz_tri.csv',['x','y','z'],is_show = False)
     get_tristimulus('data/rgb_tri.csv',['r','g','b'],is_show = False)
-
+    get_tristimulus('data/xyz_tri2006.csv',['x','y','z'],is_show = False,std='2006')
 
 
 if __name__ == '__main__':

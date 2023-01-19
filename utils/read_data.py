@@ -56,7 +56,7 @@ def set_limits(ori_data: np.ndarray,
         sep = 1
         begin, end = tmp_data[0,0], tmp_data[-1,0]
         new_wave = np.arange(begin,end+1,sep)
-        new_data, _ = cubic_spline(tmp_data,new_wave,2)
+        new_data, _ = cubic_spline(tmp_data,new_wave,tmp_data.shape[-1])
         tmp_data = new_data
     if (limits[0] < min_val) or limits[1] > max_vals[0]:
         new_limits = limits.astype(float)
@@ -79,8 +79,10 @@ def set_limits(ori_data: np.ndarray,
 
 def unit_test():
     relative_paths = [
-        'data\LAMP\LED Dals SWIVLEDHP-4K Domestic.csv']
-    print(read_data_from_csv(relative_paths))
-
+        'data/OSCONIQ P3030/GT_QSSPA1_13_20190805_spectrum.txt']
+    data_list = read_data_from_csv(relative_paths)
+    data_list = data_list[0]    
+    np.savetxt(f'data/{data_list[1]}',data_list[0],fmt='%.5f',delimiter=',')
+    
 if __name__ == '__main__':
     unit_test()

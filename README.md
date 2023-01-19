@@ -18,9 +18,22 @@ D. 在上述RGB光源的基础上，加入第四个基色（如黄色），假�
 
 左图：光谱功率分布；右图：色品图与色域
 
+## Python版本与依赖库
+
+Python3.7.13 Windows10
+
+依赖库
+
+```
+matplotlib==3.5.3
+numpy==1.21.5
+scipy==1.7.3
+jupyter
+```
+
 ## 参考资料
 
-### 程序 (深度！)
+### 程序借鉴
 
 * colour -- [colour-science/colour: Colour Science for Python (github.com)](https://github.com/colour-science/colour)
   * 借鉴了colour中的光谱分布图中xyz预处理（E\D65预处理矩阵）*CMCCAT2000* chromatic adaptation transform.  http://en.wikipedia.org/wiki/CIECAM02#CAT02 XYZ -> LMS -> XYZ

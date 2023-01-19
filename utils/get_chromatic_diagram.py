@@ -16,6 +16,7 @@ def get_background(default_D65_path: str =
                    'data/xyz_tri2006.csv',
                    type_xyz: int = 0,  # 0 -> 1931, 1 -> 2006,
                    samples:int=256,
+                   is_plot_white:  bool = True,
                    ) -> Tuple[Tuple[plt.Figure,plt.Axes],
                               np.ndarray,np.ndarray,np.ndarray]:
     default_data = read_data_from_csv(
@@ -125,9 +126,11 @@ def get_background(default_D65_path: str =
     axes.grid(visible=True)
     axes.set_xlim([-.1,.9]),axes.set_ylim([-.1,.9])
     # plt.scatter(0.31270, 0.32900) # D65
-    axes.scatter(xy_D65[0],xy_D65[1],color='#333333',
-                 label=f'D65-White {np.round(xy_D65,4)}')
-
+    if is_plot_white:
+        axes.scatter(xy_D65[0],xy_D65[1],color='#333333',
+                    label=f'D65-White {np.round(xy_D65,4)}')
+        axes.scatter(x = 1/3,y = 1/3,marker = '+',color='#333333',
+                    label=f'E [1/3 1/3]')
     # line_xy only using in (d)
     return (fig,axes), wave_length, XYZ, line_xy
 
@@ -162,7 +165,7 @@ def unittest():
     axes.scatter(NTSC[:,0],NTSC[:,1],color='#9933FF')
     axes.plot(new_NTSC[..., 0], new_NTSC[..., 1],color='#9933FF',label='NTSC')
     
-    axes.set_title('xyz cie2006' if type_xyz else 'xyz cie1931')
+    axes.set_title('CIE 2006-XYZ' if type_xyz else 'CIE 1931-XYZ')
     left_part_xy = line_xy[np.argwhere(wave_length==460)[0,0]:
         np.argwhere(wave_length==550)[0,0]]
     wave_left = np.arange(460,551,1)

@@ -8,18 +8,19 @@ from utils.read_data import read_data_from_csv
 
 
 def get_spd(default_spd_path: Union[str,list] = 'data/psu_llab/CQS-1-NM.csv',
-            spd_type: int = 0 # 0 -> only return, 1 -> combine
+            spd_type: int = 0, # 0 -> only return, 1 -> combine
+            if_sep: bool = False,
             ) -> Tuple[np.ndarray,Union[str,List[str]],np.ndarray]:
     if type(default_spd_path) == str:
         default_data = read_data_from_csv(
-            [default_spd_path])
+            [default_spd_path],if_sep=if_sep)
         spd_data,file_str = default_data[0]
         wave_length, spd_data = spd_data[:,0], spd_data[:,1:]
         spd_data = spd_data/np.max(spd_data)
 
         spd_data = np.sum(spd_data,axis=1) if spd_type else spd_data
     else:
-        default_data = read_data_from_csv(default_spd_path)
+        default_data = read_data_from_csv(default_spd_path,if_sep=if_sep)
         spd_data,file_str = default_data[0]
         file_str = [file_str]
         wave_length, spd_data = spd_data[:,0], spd_data[:,1:]
@@ -127,13 +128,13 @@ def unit_test():
         )
         axes[idx].set_xlabel(r'$\lambda$/nm')
         axes[idx].set_ylabel('Intensity')
-        axes[idx].set_title('xyz cie2006' if idx else 'xyz cie1931')
+        axes[idx].set_title('CIE 2006-XYZ' if idx else 'CIE 1931-XYZ')
         axes[idx].spines['top'].set_visible(False)
         axes[idx].spines['left'].set_visible(False)
         axes[idx].spines['right'].set_visible(False)
         axes[idx].get_yaxis().set_visible(False)
     plt.suptitle(f'Color Spectrum {file_str}')
-    fig.show()
+    plt.show()
     plt.close(fig)
     # plt.show()
 

@@ -31,7 +31,7 @@ def plot_sd(is_save: bool = True,
         os.makedirs(base_dir)
     fig, axes = plt.subplots(1, 1, figsize=(8,8), tight_layout=True)
     for type_xyz in range(2):
-        xyz_str = 'xyz cie2006' if type_xyz else 'xyz cie1931'
+        xyz_str = 'CIE 2006-XYZ' if type_xyz else 'CIE 1931-XYZ'
         (fig_tmp,_), _, _, line_xy = get_background(type_xyz=type_xyz)
         plt.close(fig_tmp)
         line_xy_e = np.concatenate([line_xy[:,:],   # line_xy_expended_data
